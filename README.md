@@ -1,6 +1,15 @@
 # Movie-Recommendation-System
 ## 1. Objectif
 
+L'objectif de ce projet est de **développer un système de recommandation de films** capable de prédire les notes que les utilisateurs pourraient attribuer à des films qu'ils n'ont pas encore vus, et de leur fournir des recommandations personnalisées.  
+
+Pour cela, nous explorons plusieurs méthodes de filtrage collaboratif :  
+- **Matrix Factorization (MF)** : approche linéaire basée sur la factorisation de la matrice utilisateur-item.  
+- **Neural Collaborative Filtering (NCF)** : modèle non-linéaire basé sur des réseaux de neurones pour capturer les interactions complexes.  
+- **GraphSAGE (GNN)** : approche par graphes qui exploite la structure relationnelle des interactions utilisateurs-items pour générer des recommandations plus riches et contextuelles.  
+
+Ce projet permet de comparer ces méthodes sur un **dataset réel (MovieLens 100k)** et d’analyser leur capacité à fournir des recommandations pertinentes.
+
 ---
 ## 2. Dataset
 Nous utilisons le dataset **MovieLens 100k** pour entraîner notre système de recommandation.
