@@ -101,7 +101,7 @@ Il utilise des **embeddings pour les utilisateurs et les items** et passe la con
 - **Embedding size** : 64  
 - **MLP hidden layers** : (128, 64, 32)  
 
-**Résumé :**  
+**Résumé :** 
 NCF est un modèle puissant pour la recommandation personnalisée, capable de modéliser les relations complexes entre utilisateurs et items.  
 Il est particulièrement efficace pour des datasets de taille moyenne à grande, mais nécessite un entraînement sur GPU et une régularisation adaptée pour éviter le surapprentissage.  
 Les résultats montrent qu’il peut fournir des recommandations pertinentes tout en maintenant une bonne précision prédictive.
