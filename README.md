@@ -58,22 +58,73 @@ MF permet de transformer le problème de recommandation en apprentissage de vect
 ---
 ### 3.2. Neural Collaborative Filtering (NCF)
 **Définition :**
+Neural Collaborative Filtering (NCF) est un modèle de **filtrage collaboratif basé sur les réseaux de neurones**.  
+Il utilise des **embeddings pour les utilisateurs et les items** et passe la concaténation de ces embeddings dans un **Multi-Layer Perceptron (MLP)** pour prédire les notes ou préférences des utilisateurs.
+
+![Neural Collaborative Filtering](NCF.jpg)
+
 **Avantages :**
+- Permet de **capturer des interactions complexes non linéaires** entre utilisateurs et items, contrairement aux modèles linéaires classiques (ex: matrix factorization).  
+- Flexible : la profondeur et largeur du MLP peuvent être ajustées selon la taille et la complexité des données.  
+- Bonne performance sur des datasets avec un **grand nombre d’utilisateurs et d’items**.
+
 **Limites :**
-**Résultats :** 
-**Paramètres d’entraînement :** 
-**Résumé :** 
+- **Exigeant en ressources** (GPU recommandé pour de grands datasets).  
+- Risque de **surapprentissage** si le dataset est petit et le réseau trop profond.  
+- Nécessite une **phase d’entraînement longue** pour converger correctement.  
+- La **cold-start problem** (nouveaux utilisateurs ou items) reste un défi.
+
+**Résultats :**
+- Sur le dataset utilisé (ex: MovieLens 100k) :  
+  - RMSE final : environ **0.21 - 0.28**  
+  - MAE final : environ **0.16 - 0.23**  
+- Le modèle converge rapidement, avec une légère surperformance sur les données d’entraînement par rapport à la validation.  
+- Les recommandations générées pour un utilisateur sont **cohérentes avec ses préférences passées**.
+
+**Paramètres d’entraînement :**
+- **Optimizer** : Adam  
+- **Learning rate** : 0.001  
+- **Batch size** : 2048  
+- **Epochs** : 50  
+- **Loss function** : MSE (Mean Squared Error)  
+- **Scheduler** : StepLR (γ=0.1 tous les 10 epochs)  
+- **Dropout** : 0.3  
+- **Embedding size** : 64  
+- **MLP hidden layers** : (128, 64, 32)  
+
+**Résumé :**
+NCF est un modèle puissant pour la **recommandation personnalisée**, capable de modéliser les relations complexes entre utilisateurs et items.  
+Il est particulièrement efficace pour des datasets de taille moyenne à grande, mais nécessite un **entraînement sur GPU et une régularisation adaptée** pour éviter le surapprentissage.  
+Les résultats montrent qu’il peut fournir des recommandations pertinentes tout en maintenant une bonne précision prédictive.
 ---
 ### 3.3. GraphSAGE (GNN)
-**Définition :**
-**Avantages :**
-**Limites :**
-**Résultats :** 
-**Paramètres d’entraînement :** 
-**Résumé :**
----
+**Définition :**  
+GraphSAGE (Graph Sample and AggregatE) est un modèle de Graph Neural Network (GNN) qui apprend des représentations (embeddings) de nœuds en échantillonnant et en agrégeant les caractéristiques de leurs voisins dans un graphe. Ici, il est utilisé pour la recommandation de films en représentant les utilisateurs et les films comme des nœuds et les interactions (notes) comme des arêtes.
 
-### 5.2. Résultats NCF
-### 5.3. Résultats GraphSAGE
-## 6. Exemples de recommandations générées
-## 7. Améliorations possibles & Perspectives
+![GraphSAGE](GraphSAGE.jpg)
+
+**Avantages :**  
+- Capable de généraliser aux nœuds non vus grâce à l'agrégation de voisinage.  
+- Exploite efficacement la structure du graphe (relations utilisateurs ↔ films).  
+- Permet de générer des embeddings riches pour la prédiction et la recommandation.  
+
+**Limites :**  
+- Peut être coûteux en mémoire et en calcul pour des graphes très grands.  
+- La performance dépend fortement de la qualité et de la densité des interactions dans le graphe.  
+- Requiert un ajustement des hyperparamètres (taille des embeddings, nombre de couches, learning rate…).  
+
+**Résultats :**  
+- Test RMSE : 0.2811  
+- Test MAE : 0.2326   
+
+**Paramètres d’entraînement :**  
+- Embedding initial : dimension 64  
+- Couche GraphSAGE : 2 couches, 64 unités chacune  
+- Optimizer : Adam, lr = 0.001  
+- Loss : MSE  
+- Epochs : 10  
+
+**Résumé :**  
+GraphSAGE a permis de construire un modèle de recommandation basé sur le graphe des interactions utilisateurs/films. Les métriques RMSE et MAE montrent que le modèle prédit correctement les notes normalisées et génère des recommandations pertinentes, exploitant la structure relationnelle du graphe.
+
+
