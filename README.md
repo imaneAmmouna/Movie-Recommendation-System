@@ -44,7 +44,7 @@ $$
 
 où **λ** est un terme de régularisation pour éviter le sur-apprentissage.
 
-![Matrix Factorization](MF.jpg)
+![Matrix Factorization](MF.JPG)
 
 **Avantages :**
 - Performant pour des grands ensembles de données
@@ -70,7 +70,7 @@ MF permet de transformer le problème de recommandation en apprentissage de vect
 Neural Collaborative Filtering (NCF) est un modèle de **filtrage collaboratif basé sur les réseaux de neurones**.  
 Il utilise des **embeddings pour les utilisateurs et les items** et passe la concaténation de ces embeddings dans un **Multi-Layer Perceptron (MLP)** pour prédire les notes ou préférences des utilisateurs.
 
-![Neural Collaborative Filtering](NCF.jpg)
+![Neural Collaborative Filtering](NCF.JPG)
 
 **Avantages :**
 - Permet de **capturer des interactions complexes non linéaires** entre utilisateurs et items, contrairement aux modèles linéaires classiques (ex: matrix factorization).  
@@ -111,7 +111,7 @@ Les résultats montrent qu’il peut fournir des recommandations pertinentes tou
 **Définition :**  
 GraphSAGE (Graph Sample and AggregatE) est un modèle de Graph Neural Network (GNN) qui apprend des représentations (embeddings) de nœuds en échantillonnant et en agrégeant les caractéristiques de leurs voisins dans un graphe. Ici, il est utilisé pour la recommandation de films en représentant les utilisateurs et les films comme des nœuds et les interactions (notes) comme des arêtes.
 
-![GraphSAGE](GraphSAGE.jpg)
+![GraphSAGE](GraphSAGE.JPG)
 
 **Avantages :**  
 - Capable de généraliser aux nœuds non vus grâce à l'agrégation de voisinage.  
