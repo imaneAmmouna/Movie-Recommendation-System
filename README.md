@@ -19,9 +19,9 @@ L’idée principale est de **décomposer** cette matrice en deux matrices de pl
 - **V** : matrice des *représentations latentes des items*
 Ainsi, la prédiction de la note qu’un utilisateur donnera à un item est obtenue par le **produit scalaire** entre leurs vecteurs latents :
 
-\[
+$$
 \hat{R}_{u,i} = U_u \cdot V_i
-\]
+$$
 
 Cette méthode permet de :
 - Réduire la dimension des données
